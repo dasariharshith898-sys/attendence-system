@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 240 40% 5%;
+    --foreground: 180 100% 95%;
+
+    --card: 240 30% 8%;
+    --card-foreground: 180 100% 95%;
+
+    --popover: 240 35% 10%;
+    --popover-foreground: 180 100% 95%;
+
+    --primary: 186 100% 50%;
+    --primary-foreground: 240 40% 5%;
+
+    --secondary: 280 100% 50%;
+    --secondary-foreground: 180 100% 95%;
+
+    --muted: 240 20% 20%;
+    --muted-foreground: 180 20% 60%;
+
+    --accent: 320 100% 50%;
+    --accent-foreground: 180 100% 95%;
+
+    --destructive: 348 100% 56%;
+    --destructive-foreground: 180 100% 95%;
+
+    --success: 160 100% 50%;
+    --success-foreground: 240 40% 5%;
+
+    --border: 240 30% 15%;
+    --input: 240 30% 12%;
+    --ring: 186 100% 50%;
+
+    --radius: 1rem;
+
+    /* Futuristic gradients */
+    --gradient-space: linear-gradient(135deg, hsl(240, 40%, 5%) 0%, hsl(260, 50%, 8%) 50%, hsl(240, 40%, 5%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(186, 100%, 50%) 0%, hsl(200, 100%, 60%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(280, 100%, 50%) 0%, hsl(320, 100%, 50%) 100%);
+    --gradient-success: linear-gradient(135deg, hsl(160, 100%, 50%) 0%, hsl(140, 100%, 60%) 100%);
+    
+    /* Glows */
+    --glow-primary: 0 0 20px hsl(186 100% 50% / 0.5), 0 0 40px hsl(186 100% 50% / 0.3);
+    --glow-accent: 0 0 20px hsl(320 100% 50% / 0.5), 0 0 40px hsl(320 100% 50% / 0.3);
+    --glow-success: 0 0 20px hsl(160 100% 50% / 0.5), 0 0 40px hsl(160 100% 50% / 0.3);
+    --glow-error: 0 0 20px hsl(348 100% 56% / 0.5), 0 0 40px hsl(348 100% 56% / 0.3);
+
+    /* Animations */
+    --transition-glow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background: var(--gradient-space);
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  /* Glassmorphism utility */
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Holographic border animation */
+  @keyframes holographic-border {
+    0%, 100% {
+      border-color: hsl(186, 100%, 50%);
+      box-shadow: 0 0 20px hsl(186 100% 50% / 0.3);
+    }
+    33% {
+      border-color: hsl(280, 100%, 50%);
+      box-shadow: 0 0 20px hsl(280 100% 50% / 0.3);
+    }
+    66% {
+      border-color: hsl(320, 100%, 50%);
+      box-shadow: 0 0 20px hsl(320 100% 50% / 0.3);
+    }
+  }
+
+  .holographic-border {
+    animation: holographic-border 3s ease-in-out infinite;
+  }
+
+  /* Scan line animation */
+  @keyframes scan-line {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+
+  .scan-line {
+    animation: scan-line 2s linear infinite;
+  }
+
+  /* Floating particles */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .particle {
+    animation: float 3s ease-in-out infinite;
+  }
+}
